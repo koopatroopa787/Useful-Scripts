@@ -74,7 +74,7 @@ def check_urls(urls, max_workers=10, timeout=10):
             url, status_code, message = future.result()
 
             # Categorize results
-            if status_code == 200:
+            if 200 <= status_code < 300:
                 results['success'].append((url, status_code, message))
                 print(f"[✓] {status_code} - {url}")
             elif 300 <= status_code < 400:
